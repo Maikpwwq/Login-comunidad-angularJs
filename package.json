@@ -1,0 +1,24 @@
+{
+  "name": "login",
+  "version": "1.0.0",
+  "description": "Acceder usuarios",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.jsx"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular-route": "^1.7.9",
+    "angular": "^1.7.9",
+    "nodemon": "^2.0.3"
+  },
+  "devDependencies": {},
+  
+"repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maikpwwq//Login-comunidad-angularJs.git"
+  },
+"keywords": []
+}
