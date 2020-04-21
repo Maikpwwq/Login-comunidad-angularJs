@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body ng-controller="controlador as lista">
-    <form action="./inicio.html" method="POST">
+    <form action="./inicio.html" method="POST" autocomplete="on">
         <?php
             if(isset($errorLogin)){
                 echo $errorLogin;
@@ -21,7 +21,7 @@
         <p>Clave: <br>
         <input type="password" name="password" id="password" ng-model="lista.password" required></p>
         <p class="center">
-        <input type="submit" value="INICIO SESI&OacuteN" title="click para enviar" ng-click="lista.Enviara"></p>
+        <input type="submit" value="INICIO SESI&OacuteN" title="click para enviar" ng-click="lista.compararUsuario"></p>
         <br/>
         A&uacuten no tiene una cuenta, 
         <a class="cerrar-sesion" href="registro.html" title="registrese">Registrese</a>

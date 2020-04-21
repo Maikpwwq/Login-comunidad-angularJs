@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Editar usuario</title>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+<body ng-controller="controlador as lista">
+<p>Seleccione el id del usuario</p><br/>
+<select name="" id="" ng-model="lista.UsuarioSeleccionado">
+<option ng-repeat="usuario in lista.usuarios" value="{{usuario.id}}"/>
+</select>
+<div autocomplete="on">
+        <p>Nombre de usuario: <br>
+        <input type="text" name="nombre" value="{{usuario.nombre}}" id="nombre" ng-model="lista.nombre" required></p>
+        <p>Correo: <br>
+        <input type="email" name="email" value="{{usuario.email}}" id="email" ng-model="lista.email" required></p>
+        <p>Clave: <br>
+        <input type="text" name="password" value="{{usuario.password}}" id="password" ng-model="lista.password" required></p>
+        <p class="center">
+        <input type="submit" value="Editar" title="click para Editar" ng-click="lista.editarUsuario"></p>
+        <br/>
+</div>
+</body>
+</html>

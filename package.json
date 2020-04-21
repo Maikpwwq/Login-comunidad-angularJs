@@ -5,20 +5,29 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.jsx"
+    "start": "nodemon index.jsx", "ng": "ng"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular-route": "^1.7.9",
     "angular": "^1.7.9",
-    "nodemon": "^2.0.3"
+    "angular-route": "^1.7.9",
+    "fs-extra": "^9.0.0",
+    "http": "0.0.1-security",
+    "nodemon": "^2.0.3",
+    "superagent": "^5.2.2"
   },
   "devDependencies": {},
-  
-"repository": {
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*"
+    ],
+    "delay": "2500"
+  },
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/Maikpwwq//Login-comunidad-angularJs.git"
   },
-"keywords": []
+  "keywords": []
 }

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <form action="./inicio.html" method="POST">
+    <form action="./inicio.html" method="POST" autocomplete="off">
         <?php
             if(isset($errorLogin)){
                 echo $errorLogin;
@@ -17,15 +17,15 @@
         ?>
         <h2>Registro</h2>
         <p>Nombre de usuario: <br>
-        <input type="text" name="nombre" id="nombre" required></p>
+        <input type="text" ng-model="lista.nombre" name="nombre" value="ingrese su nombre" id="nombre" required></p>
         <p>Correo: <br>
-        <input type="email" name="email" id="email" required></p>
+        <input type="email" ng-model="lista.email" name="email" value="registre una cuenta activa de email" id="email" required></p>
         <p>Clave: <br>
-        <input type="password" name="password" id="password" required></p>
+        <input type="password" ng-model="lista.password" name="password" value="asigne su clave" id="password" required></p>
         <p>Confirmar Clave: <br>
-        <input type="password" name="2password" id="2password" required></p>
+        <input type="password" ng-model="lista.2password" name="2password" value="repita la clave anterior" id="2password" required></p>
         <p class="center">
-        <input type="submit" value="REGISTRARSE" title="click para enviar"></p>
+        <input type="submit" value="REGISTRARSE" title="click para enviar" ng-click="lista.agregarUsuario"></p>
         <br/>
         Ya tiene una cuenta con nosotros, 
         <a class="cerrar-sesion" href="AccesoSesion.html" title="acceder">Acceder</a>

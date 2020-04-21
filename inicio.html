@@ -7,19 +7,19 @@
     <title>Inicio</title>
     <link rel="stylesheet" href="main.css">
 
-    <script src="/node_modules/angular/angular.js"></script>
+    <script src="./node_modules/angular/angular.js"></script>
 </head>
 <body ng-controller="controlador as lista">
     <div id="menu">
         <ul>
-            <li>Bienvenido nuevamente {{nombre}} </li>|
-            <li class=""><a href="#!./EditarUsuario.html">Editar Usuario  </a></li>|
+            <li>Bienvenido nuevamente {{lista.nombre}} </li>|
+            <li class=""><a href="./#!EditarUsuario.html">Editar Usuario  </a></li>|
             <li class=""><a href="./CrearUsuario.html">Crear Usuario  </a></li>|
             <li class="cerrar-sesion"><a href="CerrarSesion.php">Cerrar sesi&oacuten</a></li>
         </ul>
     </div>
     <br/>
-    <section ng-model="nombre">
+    <section>
         <h1>Actualmente, estos son los usuarios que aparecen registrados</h1>
 
         <table celspacing="0">
@@ -44,9 +44,18 @@
         <td>
             {{usuario.password}} 
         </td>
+        <td>
+            <p class="btn">
+        <input type="submit" value="editar" title="click para editar" ng-click="lista.editarUsuario"></p> 
+        </td>
+        <td>
+            <p class="btn">
+        <input type="submit" value="eliminar" title="click para eliminar" ng-click="lista.eliminarUsuario"></p>  
+        </td>
         </tr>
+
         </table>
-        eliminar, editar
+        
     </section>
     
 </body>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crear un usuario</title>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+<body ng-controller="controlador as lista">
+<div autocomplete="off">
+        <p>Agrege los datos siguientes para generar un id de usuario</p><br/>
+        <p>Nombre de usuario: <br>
+        <input type="text" name="nombre" value="ingrese el nombre" id="nombre" ng-model="lista.nombre" required></p>
+        <p>Correo: <br>
+        <input type="email" name="email" value="registre una cuenta activa de email" id="email" ng-model="lista.email" required></p>
+        <p>Clave: <br>
+        <input type="password" name="password" value="asigne un password" ng-model="lista.password" id="password" required></p>
+        <p>Confirmar Clave: <br>
+        <input type="password" name="2password" value="repita el password anterior" ng-model="lista.2password2" id="2password" required></p>
+        <p class="center">
+        <input type="submit" value="REGISTRAR" title="click para guardar" ng-click="lista.agregarUsuario"></p>
+</div>
+</body>
+</html>
