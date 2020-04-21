@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registro</title>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <form action="./inicio.html" method="POST">
+        <?php
+            if(isset($errorLogin)){
+                echo $errorLogin;
+            }
+        ?>
+        <h2>Registro</h2>
+        <p>Nombre de usuario: <br>
+        <input type="text" name="nombre" id="nombre" required></p>
+        <p>Correo: <br>
+        <input type="email" name="email" id="email" required></p>
+        <p>Clave: <br>
+        <input type="password" name="password" id="password" required></p>
+        <p>Confirmar Clave: <br>
+        <input type="password" name="2password" id="2password" required></p>
+        <p class="center">
+        <input type="submit" value="REGISTRARSE" title="click para enviar"></p>
+        <br/>
+        Ya tiene una cuenta con nosotros, 
+        <a class="cerrar-sesion" href="AccesoSesion.html" title="acceder">Acceder</a>
+    </form>
+</body>
+</html>

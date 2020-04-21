@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="main.css">
+
+    <script src="/node_modules/angular/angular.js"></script>
+</head>
+<body ng-controller="controlador as lista">
+    <div id="menu">
+        <ul>
+            <li>Bienvenido nuevamente {{nombre}} </li>|
+            <li class=""><a href="#!./EditarUsuario.html">Editar Usuario  </a></li>|
+            <li class=""><a href="./CrearUsuario.html">Crear Usuario  </a></li>|
+            <li class="cerrar-sesion"><a href="CerrarSesion.php">Cerrar sesi&oacuten</a></li>
+        </ul>
+    </div>
+    <br/>
+    <section ng-model="nombre">
+        <h1>Actualmente, estos son los usuarios que aparecen registrados</h1>
+
+        <table celspacing="0">
+        <thead>
+        <tr>
+           <td>id</td>
+           <td>nombre</td>
+           <td>correo</td>
+           <td>clave</td>
+        </tr>
+        </thead>
+        <tr ng-repeat="usuario in lista.usuarios">
+        <td>
+            {{usuario.id}} 
+        </td>
+        <td>
+            {{usuario.nombre}} 
+        </td>
+        <td>
+            {{usuario.email}} 
+        </td>
+        <td>
+            {{usuario.password}} 
+        </td>
+        </tr>
+        </table>
+        eliminar, editar
+    </section>
+    
+</body>
+</html>
