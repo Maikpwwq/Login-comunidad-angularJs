@@ -1,6 +1,22 @@
-const angular = require('angular');
+const {angular} = require('angular');
 var app = angular.module("app",[require('angular-route']);
-const superagent = require('superagent');
+const {superagent} = require('superagent');
+const {usuarios} = require ('./Datos.json');
+const {HttpClientModule} = require('@angular/common/http');
+const {NgModule} = require('@angular/core');
+const {BrowserModule} = require('@angular/platform-browser');
+
+@NgModule({
+    imports:[
+    BrowserModule,
+    HttpClientModule
+    ]
+})
+
+app.component({
+
+
+}),
 
 app.config(function($routeProvider){
 	$routeProvider
@@ -21,13 +37,15 @@ app.config(function($routeProvider){
 	});
 });
 
+app.value('$routerRootComponent', 'app')
+
 app.controller("controlador", function($scope){
+
     var lista = this;
+    var lista.$http= HttpClientModule;
+
     var n = 4;
-    lista.usuarios = [
-    {id:1,nombre:carlos,correo:carlos@gmail.com,clave:1234},
-    {id:2,nombre:diana,correo:diana@gmail.com,clave:1234},
-    {id:3,nombre:cesar,correo:cesar@gmail.com,clave:1234}];
+    lista.usuarios = [{usuarios}];
 
     lista.agregarUsuario = function(){
 
@@ -60,18 +78,20 @@ app.controller("controlador", function($scope){
             return obj.id == credencial.id;
         });
 
-    if(
-        Nombre de usuario: lista.usuario.name;
-        Correo: lista.usuario.email;
-        Clave: lista.usuario.password;
+    if( obj.id == null){
+        res.status(404)
+        return res.send('El Usuario no se ha encontrado')
+
+    }
+        return true;
     )
     
     };
 
     lista.validarSesion.when(function(){
-        if( usuario!="" 
+        if( SesionUsuario==true 
            then lista.
-        )
+        ) else 
     });
 
              
@@ -96,11 +116,18 @@ app.controller("controlador", function($scope){
     });  
 
     lista.editarUsuario = function(){
-
+    superagent
+      .post('/EditarUsuario')
+      .send({ name: 'Manny', species: 'cat' }) // sends a JSON post body
+      .set('X-API-Key', 'foobar')
+      .set('accept', 'json')
+      .end(function (err, res) {
+        // Calling the end function will send the request
+      });
     };
 
     lista.eliminarUsuario = function(){
-
+        $http.delete()
     };
 });
 

@@ -17,9 +17,9 @@
         ?>
         <h2>Acceder sesi&oacuten</h2>
         <p>Nombre de usuario: <br>
-        <input type="text" name="nombre" id="nombre" ng-model="lista.nombre" required></p>
+        <input type="text" name="nombre" id="nombre" [(ngModel)]="lista.nombre" required></p>
         <p>Clave: <br>
-        <input type="password" name="password" id="password" ng-model="lista.password" required></p>
+        <input type="password" name="password" id="password" [(ngModel)]="lista.password" required></p>
         <p class="center">
         <input type="submit" value="INICIO SESI&OacuteN" title="click para enviar" ng-click="lista.compararUsuario"></p>
         <br/>

@@ -8,14 +8,27 @@
     <link rel="stylesheet" href="main.css">
 
     <script src="./node_modules/angular/angular.js"></script>
+    <script src="/node_modules/@angular/router/angular1/angular_1_router.js"></script>
+    <script src="/app.js"></script>
+    <script src="/CerrarSesion.js"></script>
+    <script src="/Sesiones.js></script>
+
+<!-- IE required polyfills, in this exact order -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.33.3/es6-shim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.20/system-polyfills.js"></script>
+<script src="https://unpkg.com/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
 </head>
 <body ng-controller="controlador as lista">
     <div id="menu">
         <ul>
             <li>Bienvenido nuevamente {{lista.nombre}} </li>|
-            <li class=""><a href="./#!EditarUsuario.html">Editar Usuario  </a></li>|
-            <li class=""><a href="./CrearUsuario.html">Crear Usuario  </a></li>|
-            <li class="cerrar-sesion"><a href="CerrarSesion.php">Cerrar sesi&oacuten</a></li>
+            <li class=""><a href="#!./EditarUsuario.html">Editar Usuario  </a></li>|
+            <li class=""><form action="#!./CrearUsuario.html" method="POST">
+                         <button type="submit">Crear Usuario</button>
+            </form></li>|
+            <li class="cerrar-sesion"><form action="/logout?_method=DELETE" method="POST">
+                         <button type="submit">Cerrar sesi&oacuten</button>
+            </form></li>
         </ul>
     </div>
     <br/>

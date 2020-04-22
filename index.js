@@ -1,6 +1,6 @@
-const angular = require('angular');
-const PerfilUsuario = require ('./PerfilUsuario.php');
-const Sesiones = require ('./Sesiones.php');
+const {angular} = require('angular');
+const {PerfilUsuario} = require ('./PerfilUsuario.php');
+const {SesionUsuario} = require ('./Sesiones.php');
 
 const fse = require ('fs-extra');
 const http = require ('http');
@@ -16,7 +16,7 @@ const server = http.createServer(function(req,res){
         res.write(data); 
     }
     res.end()
-    });
+    }));
 });
 
 server.listen(port, (function(error){
@@ -25,34 +25,34 @@ server.listen(port, (function(error){
    } else {
       console.log('el servidor esta escuchando el puerto'+ port)
    }
-});
+}));
 
 var sesionUsuario = new SesionUsuario();
 var usuario = new Usuario();
 
-if(isset($_SESSION['usuario'])){
+if(isset(lista.sesion.usuario)){
     //echo "hay una sesion activa";
-    usuario->setUsuario(sesionUsuario->getCurrentUser());
-    include_once 'inicio.html';
+    usuario= setUsuario(sesionUsuario=getUsuarioActual());
+    return $http.get('./inicio.html'));
 
 }else if(isset($_POST['nombre']) && isset($_POST['password'])){
     
-    var userForm = $_POST['nombre'];
-    var passForm = $_POST['password'];
+    var userForm = lista.nombre;
+    var passForm = lista.password;
 
     usuario = new Usuario();
-    if(usuario->userExists(userForm, passForm)){
+    if(usuario!="", userExists(userForm, passForm)){
         //echo "Existe el usuario";
-        sesionUsuario->setCurrentUser(userForm);
-        usuario->setUser(userForm);
+        sesionUsuario= setUsuarioActual(userForm);
+        usuario= setUsuario(userForm);
 
-        include_once 'inicio.html';
+        return $http.get('./inicio.html'));
     }else{
         //echo "No existe el usuario";
         errorLogin = "Nombre de usuario y/o password incorrecto";
-        include_once 'AccesoSesion.php';
+        return './AccesoSesion.html';
     }
 }else{
     //echo "Accede primero";
-    include_once 'AccesoSesion.html';
+    return $http.get('./AccesoSesion.html'));
 }

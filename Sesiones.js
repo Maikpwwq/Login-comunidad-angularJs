@@ -1,23 +1,37 @@
-<?php
+import {Component, OnInit} fron '@angular/core';
 
-class UserSession{
+.component('Sesiones', {
+  template: '<h2>Sesiones</h2><ng-outlet></ng-outlet>',
+  templateUrl: 'inicio.html',
+  controller: 'app',
+  $routeConfig: [{path: './Sesiones.js', name: 'Sesiones', component: 'Sesiones'},]
+});
+
+
+export class SesionUsuario implement OnInit{
+
+    constructor(){
+
+    }
+
+    ngOnInit(){
+
+    }
 
     public function __construct(){
         session_start();
     }
 
-    public function setCurrentUser($user){
-        $_SESSION['user'] = $user;
+    public function setUsuarioActual(usuario){
+        lista.sesion.usuario = lista.usuario;
     }
 
-    public function getCurrentUser(){
-        return $_SESSION['user'];
+    public function getUsuarioActual(){
+        return lista.sesion.usuario;
     }
 
-    public function closeSession(){
+    public function cerrarSesion(){
         session_unset();
         session_destroy();
     }
 }
-
-?>
