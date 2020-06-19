@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sesiones</title>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+<body ng-controller="controlador as lista">
+    <form #AccessForm="ngForm" action="./inicio.html" method="POST" autocomplete="on">
+
+        <h2>Acceder sesi&oacuten</h2>
+        <p>Nombre de usuario: <br>
+        <input type="text" name="nombre" id="nombre" [(ngModel)]="nombre" required></p>
+        <p>Clave: <br>
+        <input type="password" name="password" id="password" [(ngModel)]="password" required></p>
+        <p class="center">
+        <button title="click para enviar" (ngSubmit)="onSubmit(AccessForm)" (click)="compararUsuario()">Iniciar sesi&oacuten</button></p>
+        <hr/>
+        A&uacuten no tiene una cuenta,
+        <a class="cerrar-sesion" href="registro.html" title="registrese">Registrese</a>
+    </form>
+</body>
+</html>
+
+
+<!--
+<!?php
+            if(isset($errorLogin)){
+                echo $errorLogin;
+            }
+        ?>
+-->

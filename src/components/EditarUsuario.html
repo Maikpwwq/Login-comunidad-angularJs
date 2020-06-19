@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Editar usuario</title>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+<body ng-controller="controlador as lista" class="bckgrd-color: #eee">
+<form *ngIF #EditForm="ngForm" action="./inicio.html" method="POST" autocomplete="off">
+  <p>Seleccione el id del usuario</p><br/>
+  <select name="" id="" ng-model="lista.UsuarioSeleccionado">
+  <option ng-repeat="usuario in lista.usuarios" value="{{usuario.id}}"/>
+  </select>
+        <p>Nombre de usuario: <br>
+        <input type="text" name="nombre" value="{{usuario.nombre}}" id="nombre" [(ngModel)]="nombre" required></p>
+        <p>Correo: <br>
+        <input type="email" name="email" value="{{usuario.email}}" id="email" [(ngModel)]="email" required></p>
+        <p>Clave: <br>
+        <input type="password" name="password" value="{{usuario.password}}" id="password" [(ngModel)]="password" required></p>
+        <p class="center">
+        <button title="click para Editar" (ngSubmit)="onSubmit(EditForm)" (click)="editarUsuario()">
+          EDITAR</button>
+        </p>
+        <br/>
+      </form>
+</body>
+</html>
