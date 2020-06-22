@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SesionUsuario }  from '../controlador/Sesiones';
+import {FichaUsuario} from './FichaUsuario'
+import { bindNodeCallback } from 'rxjs';
 
 @Component({
   selector: 'app-Registro',
@@ -9,11 +12,12 @@ import { ActivatedRoute } from '@angular/router';
 
 export class RegistroComponent implements OnInit {
 
-  public nombre: string = 'ingrese su nombre';
-  public email: string = 'registre una cuenta activa de email';
-  public password: string = 'asigne su clave';
-  public password2: string = 'repita la clave anterior';
-
+  public usuario: FichaUsuario = {
+    nombre: 'ingrese su nombre',
+    email: 'registre una cuenta activa de email',
+    password: 'asigne su clave',
+    password2: 'repita la clave anterior',
+  }
 
   constructor(private route: ActivatedRoute,) {
 
@@ -25,7 +29,7 @@ export class RegistroComponent implements OnInit {
   }
 
   setValue() {
-    this.nombre = '';
+
   }
 
   ngOnChanges() {
@@ -36,19 +40,13 @@ export class RegistroComponent implements OnInit {
     console.log(f.value);
   }
 
-  validarSesion.when(function(){
-    if( SesionUsuario==true
-       then lista.
-    ) else
-  });
-
   agregarUsuario () {
 
-    var usuario = new lista.usuario ({
-     nombreUsuario: lista.nombre;
-     correo: lista.email;
-     clave: lista.password;
-     confirmarClave: lista.2password
+    var Usuario = new this.usuario ({
+     nombreUsuario: 'usuario.nombre',
+     correo: 'usuario.email',
+     clave: 'usuario.password',
+     confirmarClave: 'usuario.password2',
     })
 
     if( clave == confirmarClave

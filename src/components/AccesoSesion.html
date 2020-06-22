@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sesiones</title>
-
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
 </head>
 <body ng-controller="controlador as lista">
-    <form #AccessForm="ngForm" action="./inicio.html" method="POST" autocomplete="on">
-
+  {{AccessForm.value | json}}
+  <hr/>
+    <!-- Formulario acceso sesion -->
+    <form #AccessForm="ngForm" action="../app/app.component.html" method="POST" autocomplete="on">
         <h2>Acceder sesi&oacuten</h2>
         <p>Nombre de usuario: <br>
-        <input type="text" name="nombre" id="nombre" [(ngModel)]="nombre" required></p>
+        <input type="text" name="nombre" id="nombre" [(ngModel)]="usuario.nombre" value="{{usuario.nombre}}" required></p>
         <p>Clave: <br>
-        <input type="password" name="password" id="password" [(ngModel)]="password" required></p>
+        <input type="password" name="password" id="password" [(ngModel)]="usuario.password" value="{{usuario.password}}" required></p>
         <p class="center">
         <button title="click para enviar" (ngSubmit)="onSubmit(AccessForm)" (click)="compararUsuario()">Iniciar sesi&oacuten</button></p>
         <hr/>
@@ -24,8 +25,6 @@
     </form>
 </body>
 </html>
-
-
 <!--
 <!?php
             if(isset($errorLogin)){

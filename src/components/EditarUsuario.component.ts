@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SesionUsuario }  from '../controlador/Sesiones';
+import {FichaUsuario} from './FichaUsuario'
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-EditarUsuario',
@@ -9,9 +12,12 @@ import { ActivatedRoute } from '@angular/router';
 
 export class EditarUsuarioComponent implements OnInit {
 
-  public nombre: string = 'ingrese su nombre';
-  public email: string = 'registre una cuenta activa de email';
-  public password: string = 'asigne una clave';
+  usuario: FichaUsuario = {
+    nombre: 'ingrese su nombre',
+    email: 'registre una cuenta activa de email',
+    password: 'asigne su clave',
+    password2: '',
+  }
 
   constructor(private route: ActivatedRoute,) {
 
@@ -23,11 +29,9 @@ export class EditarUsuarioComponent implements OnInit {
   }
 
   setValue() {
-    this.nombre = '';
   }
 
   ngOnChanges() {
-
   }
 
   onSubmit(fas: NgForm) {
@@ -45,8 +49,7 @@ export class EditarUsuarioComponent implements OnInit {
       });
   };
 
-    lista.eliminarUsuario = function(){
-        $http.delete()
-    };
-
+  eliminarUsuario = function(){
+      this.$http.delete()
+  };
 }

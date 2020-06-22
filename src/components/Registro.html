@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registro</title>
-
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
 </head>
+<!-- body -->
 <body ng-controller="controlador as lista">
-    <form *ngIF #RegisterForm="ngForm" action="./inicio.html" method="POST" autocomplete="off" ng-model="lista.agregarUsuario">
+  {{RegisterForm.value | json}}
+  <hr/>
+    <!-- Formulario de Registro -->
+    <form *ngIF #RegisterForm="ngForm" action="../app/app.component.html" method="POST" autocomplete="off" ng-model="lista.agregarUsuario">
         <h2>Registro</h2>
         <p>Nombre de usuario: <br>
-        <input type="text" [(ngModel)]="nombre" name="nombre" id="nombre" required></p>
+        <input type="text" [(ngModel)]="usuario.nombre" name="nombre" id="nombre" required></p>
         <p>Correo: <br>
-        <input type="email" [(ngModel)]="email" name="email" id="email" required></p>
+        <input type="email" [(ngModel)]="usuario.email" name="email" id="email" required></p>
         <p>Clave: <br>
-        <input type="password" [(ngModel)]="password" name="password" id="password" required></p>
+        <input type="password" [(ngModel)]="usuario.password" name="password" id="password" required></p>
         <p>Confirmar Clave: <br>
-        <input type="password" [(ngModel)]="password2" name="password2" id="password2" required></p>
+        <input type="password" [(ngModel)]="usuario.password2" name="password2" id="password2" required></p>
         <p class="center">
         <button title="click para enviar" (ngSubmit)="onSubmit(RegisterForm)" (click)="agregarUsuario()">
           REGISTRARSE</button>

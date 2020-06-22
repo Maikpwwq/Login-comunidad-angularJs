@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crear un usuario</title>
-
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
 </head>
+
 <body ng-controller="controlador as lista">
-  <form *ngIf="!verificarAutentificacion" #AddForm="ngForm" action="./inicio.html" method="POST" autocomplete="off">
+  {{AddForm.value | json}}
+  <hr/>
+  <!-- Formulario grabar usuarios -->
+  <form *ngIf="!verificarAutentificacion" #AddForm="ngForm" action="../app/app.component.html" method="POST" autocomplete="off">
         <p>Agrege los datos siguientes para generar un id de usuario</p><br/>
         <p>Nombre de usuario: <br>
-        <input type="text" name="nombre" id="nombre" [(ngModel)]="nombre" required></p>
+        <input type="text" name="nombre" id="nombre" [(ngModel)]="usuario.nombre" required></p>
         <p>Correo: <br>
-        <input type="email" name="email" id="email" [(ngModel)]="email" required></p>
+        <input type="email" name="email" id="email" [(ngModel)]="usuario.email" required></p>
         <p>Clave: <br>
-        <input type="password" name="password" [(ngModel)]="password" id="password" required></p>
+        <input type="password" name="password" [(ngModel)]="usuario.password" id="password" required></p>
         <p>Confirmar Clave: <br>
-        <input type="password" name="password2" [(ngModel)]="password2" id="password2" required></p>
+        <input type="password" name="password2" [(ngModel)]="usuario.password2" id="password2" required></p>
         <p class="center">
           <button title="click para guardar" (ngSubmit)="onSubmit(AddForm)" (click)="agregarUsuario()">
             REGISTRAR</button>

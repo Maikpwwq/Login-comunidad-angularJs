@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {NgForm} from '@angular/forms';
+import { SesionUsuario }  from '../controlador/Sesiones';
+import {FichaUsuario} from './FichaUsuario'
 
 @Component({
   selector: 'app-AccesoSesion',
@@ -10,9 +12,17 @@ import {NgForm} from '@angular/forms';
 
 export class AccesoSesionComponent implements OnInit {
 
-  public nombre: string = 'ingrese su nombre';
-  public email: string = 'registre una cuenta activa de email';
-  public password: string = 'ingrese su clave';
+  usuario: FichaUsuario = {
+    nombre: 'ingrese su nombre',
+    email: 'registre una cuenta activa de email',
+    password: 'asigne su clave',
+    password2: 'repita la clave anterior',
+  }
+  public id: string ;
+
+  validarSesion : SesionUsuario = {
+    estaAutentificado: false,
+  }
 
   constructor(private route: ActivatedRoute,) {
 
@@ -43,13 +53,13 @@ export class AccesoSesionComponent implements OnInit {
 
   compararUsuario (nombre,password) {
 
-    var credencial = new lista.credencial ({
-     nombre: nombre;
-     password: lista.password;
-     id= lista.usuarioSeleccionado
+    var credencial = new this.credencial ({
+     nombre: 'usuario.nombre',
+     password: 'usuario.password',
+     id= 'usuario.usuarioSeleccionado',
     });
 
-    lista.usuarios.find(function(obj){
+    this.usuarios.find(function(obj){
         return obj.id == credencial.id;
     });
 
@@ -59,5 +69,5 @@ export class AccesoSesionComponent implements OnInit {
 
     }
     return true;
-  )
-};
+  };
+}

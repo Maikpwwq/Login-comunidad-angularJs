@@ -2,17 +2,29 @@
 <html lang="en" ng-app="app">
 <head>
   <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>Usuarios</title>
+  <link rel="stylesheet" type="text/css" href="../main.css">
 </head>
 <body ng-controller="controlador as lista">
-
-<div id="menu" class="display:inline-block">
+<!-- Welcome Toolbar -->
+<div class="toolbar" id="menu" class="display:inline-block" role="banner">
+  <span>Bienvenido nuevamente {{nombre}}</span>
+    <div class="spacer"></div>
+    <a aria-label="" target="_blank" rel="noopener" href="#" title="">
+      <img src="" width="40" alt="Logo"/></a>
   <ul>
-    <li>Bienvenido nuevamente {{nombre}} </li>|
+    <li>
     <li class="">
-        <button type="submit"><a href="#" routerLink="/EditarUsuario" routerLinkActive="active"> Editar Usuario </a></button>
+        <button type="submit"><a href="#" routerLink="/EditarUsuario" routerLinkActive="active">
+          Editar Usuario </a></button>
     </li>|
     <li class="">
-        <button type="submit"><a href="#" routerLink="/CrearUsuario" routerLinkActive="active"> Crear Usuario </a></button>
+        <button type="submit"><a href="#" routerLink="/CrearUsuario" routerLinkActive="active">
+           Crear Usuario </a></button>
     </li>|
     <li class="cerrar-sesion">
         <button type="submit"> Cerrar sesi&oacuten </button>
@@ -20,12 +32,12 @@
   </ul>
 </div>
 <br />
-
+<!-- template -->
 <ng-template>
 
 </ng-template>
-
-<section>
+<!-- Listado de usuarios registrados -->
+<section class="listadoUsuarios">
   <h1>Actualmente, estos son los usuarios que aparecen registrados</h1>
 
   <table celspacing="0">
@@ -37,6 +49,7 @@
         <td>clave</td>
       </tr>
     </thead>
+    <hr/>
     <ul>
       <li *ngFor="let usuario of usuarios" > {{id}} </li>
     </ul>
@@ -54,40 +67,21 @@
         {{usuario.password}}
       </td>
       <td>
-        <form action="#CrearUsuario" ng-link="./CrearUsuario.html" method="POST">
-          <p >
-            <button [disabled]="true" title="click para editar" (click)="lista.editarUsuario">
-              editar
-            </button>
-          </p>
+        <form action="#CrearUsuario" ng-link="/CrearUsuario" method="POST">
+          <p > <button [disabled]="true" title="click para editar" (click)="lista.editarUsuario">
+              editar </button></p>
         </form>
       </td>
       <td>
-        <form action="#EliminarUsuario" ng-link="./EliminarUsuario.html" method="POST"></form>
-        <p >
-          <button [disabled]="true" title="click para eliminar" (click)="lista.eliminarUsuario">
-            eliminar
-          </button>
+        <form action="#EliminarUsuario" ng-link="/EliminarUsuario" method="POST"></form>
+        <p > <button [disabled]="true" title="click para eliminar" (click)="lista.eliminarUsuario">
+            eliminar </button>
         </p>
       </td>
     </tr>
-
   </table>
-
 </section>
-<!-- Toolbar -->
-<div class="toolbar" role="banner">
-  <span>Welcome</span>
-    <div class="spacer"></div>
-    <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
-      <img
-      width="40"
-      alt="Logo"
-      src=""
-    />
-    </a>
-</div>
-
+<!-- Contenidos Adicionales -->
 <div class="content" role="main">
 
   <!-- Highlight Card -->
@@ -96,7 +90,7 @@
     <span>{{ titulo }} corriendo!</span>
 
   </div>
-
+  <hr/>
   <!-- Resources -->
   <h2>Recursos</h2>
   <p>Aqui algunos link que te pueden ayudar a continuar:</p>

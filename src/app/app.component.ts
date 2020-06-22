@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-import { data } from '../assets/Datos';
 import { HttpClientModule } from '@angular/common/http';
 import { superagent } from '@superagent';
-import { cargarPassport } from '../controlador/passport';
+import { cargarPassport } from '../controlador/cargarPassport';
 import { passport } from 'passport';
 import { bcrypt }  from 'bcrypt';
 import { noVerificarAutentificacion, verificarAutentificacion }  from '../controlador/Sesiones';
+import {FichaUsuario} from './FichaUsuario'
+import { data } from '../assets/Datos';
 
 @Component({
   selector: 'app-root',
@@ -19,21 +19,27 @@ import { noVerificarAutentificacion, verificarAutentificacion }  from '../contro
 export class AppComponent implements OnInit {
 
   titulo: string = 'GestorUsuarios';
+  public usuario: FichaUsuario = {
+    nombre: 'ingrese su nombre',
+    email: 'registre una cuenta activa de email',
+    password: 'asigne su clave',
+    password2: 'repita la clave anterior',
+  }
   private $http = HttpClientModule;
-  usuarios = [{data}];
   public id: string ;
-  public nombre: string ;
-  public email: string ;
-  public password: string ;
-  public password2: string ;
   public noVerificarAutentificacion: boolean;
   public verificarAutentificacion: boolean;
   desactivado= false;
+  public usuarios = [{data}];
 
   constructor(private route: ActivatedRoute,) {
     var gestorUsuarios = this;
     console.log("Componente GestorUsuarios creandose!")
-    this.use(passport.initialize());
+    passport.initialize();
+    cargarPassport(){ passport,
+      email : this.usuarios.find(usuario => usuario.email === email),
+      id : this.usuarios.find(usuario => usuario.id === id)
+    }
 
     this.Enviar = ('Evento', (event) => {
 
@@ -43,14 +49,14 @@ export class AppComponent implements OnInit {
       var form = new FormData(event.target);
       var newDate = new Date().toISOString();
 
-      var usuario = {
+      var Usuario = {
           'date': newDate,
           'nombre': form.get('nombre'),
           'email': form.get('email'),
           'clave': form.get('clave'),
       }
 
-      this.$http.push(usuario)
+      this.$http.push(Usuario)
           .then(response => console.log(response))
           .catch(error=> console.log(error))
     });
@@ -60,11 +66,6 @@ export class AppComponent implements OnInit {
     console.log("Componente GestorUsuarios creado!")
   }
 
-  cargarPassport(){
-    passport,
-    email : usuarios.find(usuario => usuario.email === email),
-    id : usuarios.find(usuario => usuario.id === id)
-  }
 
   // Publicar Pagina Usuarios
   this.$http.get('/', noVerificarAutentificacion, (req, res) => {
