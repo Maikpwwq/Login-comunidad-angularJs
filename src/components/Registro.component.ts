@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SesionUsuario }  from '../controlador/Sesiones';
-import {FichaUsuario} from './FichaUsuario'
+import {FichaUsuario} from './interfaces/Interface'
 import { bindNodeCallback } from 'rxjs';
 
 @Component({
@@ -57,4 +57,6 @@ export class RegistroComponent implements OnInit {
     )
 
   };
+
+
 }

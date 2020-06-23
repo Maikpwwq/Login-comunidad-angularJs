@@ -6,7 +6,7 @@ import { AccesoSesionComponent } from '../components/AccesoSesion.component';
 import { RegistroComponent } from '../components/Registro.component';
 import { CrearUsuarioComponent } from '../components/CrearUsuario.component';
 import { EditarUsuarioComponent } from '../components/EditarUsuario.component';
-import { FichaUsuarioComponent } from '../components/FichaUsuario';
+import { FichaUsuarioComponent } from '../components/interfaces/Interface';
 
 const routes: Routes = [
     { path: '/', component:  AppComponent},

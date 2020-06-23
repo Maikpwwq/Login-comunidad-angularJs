@@ -1,19 +1,22 @@
 import { LocalStrategy } from 'passport-strategy';
+// const  LocalStrategy = require ('passport-local').Strategy;
 import { bcrypt } from 'bcrypt';
-
 // Cargar Modelo de Usuario
-import { Usuario } from '../assets/Datos';
+import { Usuarios } from "../assets/Datos";
 
 module.exports = function(passport) {
   passport.use(
-    new LocalStrategy({ usuarionameField: 'email' }, (email, password, done) => {
-      // Comparar usuario sistema
-      Usuario.findOne({
+    new LocalStrategy({
+      usernameField: 'email',
+      passwordField: 'password'
+  }, async (email, password, done) => {
+      // Comparar usuario sistema await
+      const usuario= await Usuarios.findOne({
         email: email
-      }).then(usuario => {
+      })
         if (!usuario) {
           return done(null, false, { message: 'La cuenta de correo no esta registrada' });
-        }
+        } else {
 
         // Comparar Clave sistema
         bcrypt.compare(password, usuario.password, (err, isMatch) => {
@@ -24,17 +27,23 @@ module.exports = function(passport) {
             return done(null, false, { message: 'Clave Incorrecta' });
           }
         });
-      });
+      };
     })
   );
 
-  passport.serializeusuario(function(usuario, done) {
+  passport.serializeUser(function(usuario, done) {
     done(null, usuario.id);
   });
 
-  passport.deserializeusuario(function(id, done) {
-    Usuario.findById(id, function(err, usuario) {
+  passport.deserializeUser(function(id, done) {
+    Usuarios.findById(id, function(err, usuario) {
       done(err, usuario);
     });
   });
+
+  passport.logout = (req, res) =>{
+    req.logout();
+    req.flash('Has cerrado sesion')
+    res.redirect('/AccesoSession')
+  }
 };

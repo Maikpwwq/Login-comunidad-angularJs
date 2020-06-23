@@ -1,8 +1,19 @@
-import {SesionUsuario} from ('./controlador/Sesiones.js');
-
 const fse = require ('fs-extra');
 const http = require ('http');
 const port = 3000;
+const passport = require ('passport')
+const cargarPassport = require ('./controlador/cargarPassport');
+
+passport.initialize();
+passport.session();
+
+cargarPassport(passport.authenticate,{
+  email : this.usuarios.find(usuario => usuario.email === email),
+  id : this.usuarios.find(usuario => usuario.id === id),
+  failureRedirect: '/AccesoSesion',
+  successRedirect: '/Usuarios',
+  failureFlash: true,
+});
 
 const server = http.createServer(function(req,res){
     res.writeHead(200,{'Content-Type': 'text/html'});
@@ -24,31 +35,3 @@ server.listen(port, (function(error){
       console.log('el servidor esta escuchando el puerto'+ port)
    }
 }));
-
-var sesionUsuario = new SesionUsuario();
-var usuario = new Usuario();
-
-if(isset(lista.sesion.usuario)){
-    //echo "hay una sesion activa";
-    usuario= setUsuario(sesionUsuario=getUsuarioActual());
-    return $http.get('./index.html');
-
-}
-
-else if(isset($_POST['nombre']) && isset($_POST['password'])){
-
-    var userForm = lista.nombre;
-    var passForm = lista.password;
-
-    usuario = new Usuario();
-    if(usuario!="", userExists(userForm, passForm)){
-        //echo "Existe el usuario";
-        sesionUsuario= setUsuarioActual(userForm);
-        usuario= setUsuario(userForm);
-
-        return $http.get('./index.html');
-    }else{
-        //echo "No existe el usuario Accede primero";
-        errorLogin = "Nombre de usuario y/o password incorrecto";
-        return $http.get('./components/AccesoSesion.html');
-}}

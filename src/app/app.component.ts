@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { superagent } from '@superagent';
-import { cargarPassport } from '../controlador/cargarPassport';
-import { passport } from 'passport';
+//import { superagent } from '@superagent';
 import { bcrypt }  from 'bcrypt';
-import { noVerificarAutentificacion, verificarAutentificacion }  from '../controlador/Sesiones';
+import { verificarAutentificacion, noVerificarAutentificacion }  from '../controlador/Sesiones';
 import {FichaUsuario} from './FichaUsuario'
-import { data } from '../assets/Datos';
+import { Usuarios } from '../assets/Datos';
+const {SesionUsuario} = require ('./controlador/Sesiones.ts');
 
 @Component({
   selector: 'app-root',
@@ -27,53 +26,24 @@ export class AppComponent implements OnInit {
   }
   private $http = HttpClientModule;
   public id: string ;
-  public noVerificarAutentificacion: boolean;
-  public verificarAutentificacion: boolean;
-  desactivado= false;
-  public usuarios = [{data}];
-
+  public usuarios = new FichaUsuario(Usuarios);
+  public desactivado= false;
+  const sesionUsuario = new SesionUsuario(passport);
   constructor(private route: ActivatedRoute,) {
     var gestorUsuarios = this;
     console.log("Componente GestorUsuarios creandose!")
-    passport.initialize();
-    cargarPassport(){ passport,
-      email : this.usuarios.find(usuario => usuario.email === email),
-      id : this.usuarios.find(usuario => usuario.id === id)
-    }
-
-    this.Enviar = ('Evento', (event) => {
-
-      event.preventDefault();
-      alert('Se envio correctamente su solicitud: ' + this.state.value);
-
-      var form = new FormData(event.target);
-      var newDate = new Date().toISOString();
-
-      var Usuario = {
-          'date': newDate,
-          'nombre': form.get('nombre'),
-          'email': form.get('email'),
-          'clave': form.get('clave'),
-      }
-
-      this.$http.push(Usuario)
-          .then(response => console.log(response))
-          .catch(error=> console.log(error))
-    });
   }
 
   ngOnInit():void {
     console.log("Componente GestorUsuarios creado!")
   }
 
-
+  // this.$http.get('',{ headers: {}, params: {}, observe: {} }).subscribe ();
   // Publicar Pagina Usuarios
+  //return $http.get('./components/AccesoSesion.html');
   this.$http.get('/', noVerificarAutentificacion, (req, res) => {
      res.render('/Usuarios')
   }).subscribe ();
-
-
-  this.$http.get('',{ headers: {}, params: {}, observe: {} }).subscribe ();
 
   // usuarios
   this.$http.get('/Usuarios', verificarAutentificacion, (req, res) =>

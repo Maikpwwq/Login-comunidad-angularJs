@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {NgForm} from '@angular/forms';
 import { SesionUsuario }  from '../controlador/Sesiones';
-import {FichaUsuario} from './FichaUsuario'
+import {FichaUsuario} from './interfaces/Interface'
+import { ApiService } from './services/api.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-AccesoSesion',
@@ -19,39 +21,60 @@ export class AccesoSesionComponent implements OnInit {
     password2: 'repita la clave anterior',
   }
   public id: string ;
-
-  validarSesion : SesionUsuario = {
-    estaAutentificado: false,
-  }
+  public estaAutentificado: boolean;
+  public validarSesion = SesionUsuario;
+  _api: ApiService;
+  _usuario: UsuarioService;
 
   constructor(private route: ActivatedRoute,) {
-
     console.log("Componente AccesoSesion creandose!")
+
   }
 
   ngOnInit():void {
     console.log("Componente AccesoSesion creada!")
-
-    this.validarSesion.when(function(){
-      if( SesionUsuario==true
-         then
-      ) else
-    });
   }
 
   setValue() {
-    this.nombre = '';
+
   }
 
-  ngOnChanges() {
-
+  ngOnChanges(event) {
+      const target = event.target;
+      const value = target.value;
+      const name = target.name;
+      // El evento altera los datos guardados
+      this.setState({
+          [name]: value
+      });
+      console.log( 'Escribiendo ...');
+  };
   }
 
   onSubmit(AccessForm: NgForm) {
+    event.preventDefault();
     console.log(AccessForm.value);
+    alert('Se envio correctamente su solicitud: ' + AccessForm.value);
+
+    var form = new FormData(event.target);
+    var newDate = new Date().toISOString();
+
+    var Usuario = {
+        'date': newDate,
+        'nombre': form.get('nombre'),
+        'email': form.get('email'),
+        'clave': form.get('clave'),
+    }
+
+    this.$http.push(Usuario)
+        .then(response => console.log(response))
+        .catch(error=> console.log(error))
   }
 
   compararUsuario (nombre,password) {
+
+    event.preventDefault();
+    alert('Se envio correctamente su solicitud: ' + this.state.value);
 
     var credencial = new this.credencial ({
      nombre: 'usuario.nombre',
@@ -69,5 +92,19 @@ export class AccesoSesionComponent implements OnInit {
 
     }
     return true;
+
+    this._api.login(usuario, password).suscribe(response=>{
+      if (response.success){
+        this._usuario.usuario = response.usuario;
+      }
+    })
   };
 }
+/*
+// validarSesion
+    this.validarSesion.when(function(){
+      if( this.estaAutentificado==true
+         then
+      ) else
+    });
+*/

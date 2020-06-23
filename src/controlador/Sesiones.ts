@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: '../index.html',
   //controller: 'Sesiones',
   //$routeConfig: [{path: './Sesiones.js', name: 'Sesiones', component: 'Sesiones'},],
-  styleUrls: ['../main.css']
+  //styleUrls: ['../main.css']
 })
 
 export class SesionUsuario implements OnInit{
@@ -20,23 +20,6 @@ export class SesionUsuario implements OnInit{
     ngOnInit():void {
       console.log("Componente SesionUsuario creada!")
     }
-
-  /*public __construct(){
-      session_start();
-  }
-
-  public setUsuarioActual(usuario){
-      session.usuario = usuario;
-  }
-
-  public getUsuarioActual(){
-      return session.usuario;
-  }
-
-  public cerrarSesion(){
-      session_unset();
-      session_destroy();
-  }*/
 
   public verificarAutentificacion(req, res, next) {
       if (req.this.estaAutentificado()) {

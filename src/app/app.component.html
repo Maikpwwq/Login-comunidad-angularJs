@@ -19,15 +19,15 @@
   <ul>
     <li>
     <li class="">
-        <button type="submit"><a href="#" routerLink="/EditarUsuario" routerLinkActive="active">
+        <button type="submit"><a href="/EditarUsuario" routerLink="/EditarUsuario" routerLinkActive="active">
           Editar Usuario </a></button>
     </li>|
     <li class="">
-        <button type="submit"><a href="#" routerLink="/CrearUsuario" routerLinkActive="active">
+        <button type="submit"><a href="/CrearUsuario" routerLink="/CrearUsuario" routerLinkActive="active">
            Crear Usuario </a></button>
     </li>|
     <li class="cerrar-sesion">
-        <button type="submit"> Cerrar sesi&oacuten </button>
+        <button type="submit" (click)="desactivado = !desactivado" > Cerrar sesi&oacuten </button>
     </li>
   </ul>
 </div>
@@ -67,16 +67,16 @@
         {{usuario.password}}
       </td>
       <td>
-        <form action="#CrearUsuario" ng-link="/CrearUsuario" method="POST">
+        <form action="/CrearUsuario" ng-link="/CrearUsuario" method="POST">
           <p > <button [disabled]="true" title="click para editar" (click)="lista.editarUsuario">
               editar </button></p>
         </form>
       </td>
       <td>
-        <form action="#EliminarUsuario" ng-link="/EliminarUsuario" method="POST"></form>
+        <form action="/EliminarUsuario" ng-link="/EliminarUsuario" method="POST">
         <p > <button [disabled]="true" title="click para eliminar" (click)="lista.eliminarUsuario">
-            eliminar </button>
-        </p>
+            eliminar </button></p>
+        </form>
       </td>
     </tr>
   </table>
